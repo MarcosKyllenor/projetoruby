@@ -9,7 +9,7 @@ puts "Usuário criado:"
 puts "login admin@admin.com"
 puts "111111"
 
-50.times do
+1000.times do
     User.create!(
       email: Faker::Internet.email,
       password: Faker::Internet.password(min_length: 6)
@@ -18,7 +18,7 @@ puts "111111"
   
 puts "50 usuários foram criados com sucesso!"
 
-100.times do
+3000.times do
     Person.create!(
         name: Faker::Name.name,
         phone_number: Faker::PhoneNumber.phone_number,
@@ -29,7 +29,7 @@ puts "50 usuários foram criados com sucesso!"
   end
 puts "100 Pessoas foram cadastradas!"
 
-500.times do
+15000.times do
     person = Person.order("RANDOM()").first
       Debt.create!(
         person: person,
