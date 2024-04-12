@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :debts, except: %i(edit update show)
+  resources :payments
 
   resources :people do
     collection do
