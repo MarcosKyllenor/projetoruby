@@ -24,15 +24,7 @@
               <td><%= payment.person.name %></td>
               <td><%= payment.person.phone_number %></td>
               <td class="text-center align-middle">
-                <% if payment.person.active %>
-                  <span class="text-success">
-                    <i class="bi bi-check-circle"></i>
-                  </span>
-                <% else %>
-                  <span class="text-danger">
-                    <i class="bi bi-x-circle"></i>
-                  </span>
-                <% end %>
+                <%= person_status_icon(person) %>
               </td>
               <td class="text-end align-middle">
                 <%= payment.person.balance %>
