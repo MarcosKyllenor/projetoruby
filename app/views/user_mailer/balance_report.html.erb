@@ -1,0 +1,22 @@
+<h1>Relatório de Débitos</h1>
+
+<%# Check if current user is present and has associated people %>
+<% if @current_user && @current_user.people.present? %>
+  <%# Generate CSV data %>
+  <%
+    require 'csv'
+    csv_data = CSV.generate(headers: true) do |csv|
+      csv << ['name', 'balance']
+      @current_user.people.includes(:debts).order(:name).each do |person|
+        csv << [person.name, person.debts.sum(:amount)]
+      end
+    end
+  %>
+
+  <%# Attach CSV file to the email %>
+  <% attachments['balance_report.csv'] = { mime_type: 'text/csv', content: csv_data } %>
+
+  <p>Encontre o arquivo CSV em anexo para o relatório de saldo.</p>
+<% else %>
+  <p>Nenhuma pessoa associada ao usuário atual.</p>
+<% end %>
