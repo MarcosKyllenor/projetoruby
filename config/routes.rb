@@ -1,3 +1,6 @@
+require 'sidekiq'
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
 
@@ -21,4 +24,5 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   mount RailsPerformance::Engine, at: 'rails/performance'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount Sidekiq::Web => '/sidekiq'
 end
