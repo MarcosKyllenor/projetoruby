@@ -8,4 +8,5 @@ class Debt < ApplicationRecord
   def update_person_balance
     person.update_balance
   end
+  scope :expensive_debts, -> { where("amount > 100000").order(created_at: :desc).limit(10) }
 end

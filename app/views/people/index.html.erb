@@ -1,6 +1,5 @@
 <%# TODO: refactor DRY %>
 
-
 <h1>Associados</h1>
 
 <%= link_to new_person_path, class: 'btn btn-light btn-sm' do %>
@@ -45,7 +44,7 @@
           <%= person_status_icon(person) %>
         </td>
         <td class="text-end align-middle">
-          <%= person.balance %>
+          <%= number_to_currency(person.balance) %> <%# Assumindo que 'balance' calcula o total de débitos %>
         </td>
         <td class="text-center align-middle">
           <div class="btn-group" role="group" aria-label="Actions">

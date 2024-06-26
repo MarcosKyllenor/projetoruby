@@ -24,10 +24,10 @@
               <td><%= payment.person.name %></td>
               <td><%= payment.person.phone_number %></td>
               <td class="text-center align-middle">
-                <%= person_status_icon(person) %>
+                <%= person_status_icon(payment.person) %>
               </td>
               <td class="text-end align-middle">
-                <%= payment.person.balance %>
+                <%= number_to_currency(payment.person.balance) %>
               </td>
               <td class="text-center align-middle">
                 <%= link_to "Visualizar pagamento", payment %>

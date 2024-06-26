@@ -5,6 +5,7 @@ Debt.destroy_all
 Payment.destroy_all
 
 User.create email: 'marcos@admin.com', password: '123456'
+User.create email: 'admin@admin.com', password: '111111'
 
 100.times do
   User.create!(
@@ -15,7 +16,7 @@ User.create email: 'marcos@admin.com', password: '123456'
 end
 
 
-100.times do
+10000.times do
   Person.create!(
     name: Faker::Name.name,
     phone_number: Faker::PhoneNumber.phone_number,

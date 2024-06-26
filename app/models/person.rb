@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  audited
+  
   belongs_to :user, optional: true
 
   has_many :debts, dependent: :destroy
@@ -71,4 +73,3 @@ private
       errors.add(:national_id, :invalid)
     end
   end
-
