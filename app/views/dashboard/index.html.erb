@@ -40,7 +40,7 @@
           <% @expensive_debts.each do |debt| %>
           <tr>
             <td><%= debt.person.name %></td>
-            <td><%= number_to_currency(debt.amount) %></td>
+            <td class="text-end"><%= number_to_currency(debt.amount) %></td>
             </tr>
           <% end %>
         </table>

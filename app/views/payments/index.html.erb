@@ -1,41 +1,42 @@
-<p style="color: green"><%= notice %></p>
+<%= notice %>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Pagamentos</h1>
+<h1>Pagamentos</h1>
 
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>CPF/CNPJ</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Ativo</th>
-            <th>Saldo/Débito</th>
-            <th></th>
-            <%= link_to "Novo pagamento", new_payment_path, class: "btn btn-primary mt-3" %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @payments.each do |payment| %>
-            <tr>
-              <td><%= payment.person.national_id %></td>
-              <td><%= payment.person.name %></td>
-              <td><%= payment.person.phone_number %></td>
-              <td class="text-center align-middle">
-                <%= person_status_icon(payment.person) %>
-              </td>
-              <td class="text-end align-middle">
-                <%= number_to_currency(payment.person.balance) %>
-              </td>
-              <td class="text-center align-middle">
-                <%= link_to "Visualizar pagamento", payment %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<%= link_to new_payment_path, class: 'btn btn-light btn-sm' do %>
+  <i class="bi bi-plus"></i>
+  Novo pagamento
+<% end %>
+
+<%= will_paginate @payments %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>CPF/CNPJ</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Ativo</th>
+      <th>Saldo/Débito</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.person.national_id %></td>
+        <td><%= payment.person.name %></td>
+        <td><%= payment.person.phone_number %></td>
+        <td class="text-center align-middle">
+          <%= person_status_icon(payment.person) %>
+        </td>
+        <td class="text-end align-middle">
+          <%= number_to_currency(payment.person.balance) %>
+        </td>
+        <td class="text-center align-middle">
+          <%= link_to "Visualizar pagamento", payment %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @payments %>
